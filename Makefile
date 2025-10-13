@@ -6,7 +6,7 @@ prog : driver_phase1.o Container.o
 # file dependencies
 driver.o : Container.h
 	g++ -std=c++11 -c driver_phase1.cpp
-Square.o : Container.h
+Container.o : Container.h
 	g++ -std=c++11 -c Container.cpp
 
 
