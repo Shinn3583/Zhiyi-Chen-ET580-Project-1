@@ -9,7 +9,7 @@ int main() {
     StringArray c;
     File::read("data.csv", c);
 
-    cout << "Data loaded from CSV: " << endl;
+    //cout << "Data loaded from CSV: " << endl;
     c.print();
 
  

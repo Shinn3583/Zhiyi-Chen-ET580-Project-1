@@ -6,24 +6,27 @@
 #include <sstream>
 #include<string>
 using namespace std;
+//Gabriel Sencion 10/15/25 fixed while statment to read and output data.csv
 
-void File::read(const std::string& filename, StringArray& StringArray) {
-    std::ifstream file(filename);
+void File::read(const std::string& filename, StringArray& stringArray) {
+    ifstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Error: Could not open file " << filename << "\n";
+        cerr << "Error: Could not open file " << filename << endl;
         return;
     }
  
+cout << "Data loaded from CSV: " << endl;   // print header first
  
-std::string line;
-if (std::getline(file, line)) {
-    std::stringstream ss(line);
-    std::string value;
-    while (std::getline(ss, value, ',')) {
-        StringArray.maxSize();
-    }
-}
+string line;
+while (getline(file, line)) {                //read each line
+    stringstream ss(line);
+    string value;
 
+    while (getline(ss, value, ',')) {       //split byt commas
+        cout << value << " ";               //prints each number 
+    }
+    cout << endl;                           //new line after each row
+}
 
 file.close();
 }
