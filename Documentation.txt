@@ -1,0 +1,22 @@
+ET580 – Project I: Group A Summary Report
+
+Phase 1
+In Phase 1, our team implemented file reading and dynamic array storage. 
+The program successfully reads numerical data from data.csv using the File class and stores it inside the StringArray container.
+The output displays the loaded data correctly. Constructors, destructors, and encapsulation were applied to manage dynamic memory safely.
+
+Phase 2
+Phase 2 extended the project by adding sorting and searching functionalities according to Group A’s requirements.
+We implemented and tested:
+selectionSortAsc() for ascending order sorting,
+linearSearch() for sequential search, and
+binarySearch() for efficient lookup after sorting.
+All methods performed correctly, producing accurate results and clean formatted output.
+
+Team Contributions
+Zhiyi Chen – Phase 1 initialization, dynamic memory setup, constructor/destructor.
+Gabriel Sencion – File input handling, debugging CSV reading, and Makefile setup.
+Giankarlo Gomez – Phase 2 implementation (sorting and searching), code formatting, and Makefile update.
+Result
+Both phases compile and run successfully with make. 
+The output matches the project specifications.

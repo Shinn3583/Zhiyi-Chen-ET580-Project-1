@@ -1,89 +1,162 @@
-//Zhiyi Chen 10/7 Commit 1
+// Zhiyi Chen 10/7 Commit 1
 #include "Container.h"
+#include <iostream>
+#include <cassert>
+using namespace std;
 
-//Zhiyi Chen 10/13 Commit 2
-StringArray::StringArray(int initialMax) : maxValues(initialMax), numValues(0) 
+// Gabriel Sencion 10/14/25 Commit 2
+// Updated by Giankarlo Gomez: formatted to professor’s instructions
+
+// ======================================
+// Default constructor
+// ======================================
+StringArray::StringArray(int initialMax)
 {
-    data = new std::string[maxValues];
+    assert(initialMax > 0);
+    maxValues = initialMax;                  // maximum number of values
+    numValues = 0;                           // current number of values
+    data = new string[maxValues];            // allocate memory
 }
 
+// ======================================
 // Destructor
-StringArray::~StringArray() 
+// ======================================
+StringArray::~StringArray()
 {
-    delete[] data;
+    delete [] data;                          // free allocated memory
 }
 
-//grow the array
-
-void StringArray::growArray(int newMax) 
+// ======================================
+// grow the array (private helper)
+// ======================================
+void StringArray::growArray(int newMax)
 {
-    std::string* newData = new std::string[newMax];
-    
-    //copy existing data
-    for (size_t i = 0; i < numValues; ++i) {
-        newData[i] = data[i];
-    }
-    
-    delete[] data;
-    data = newData;
+    assert(newMax >= numValues);             // make sure new size fits current data
+    string* tmp = new string[newMax];
+
+    for (int i = 0; i < numValues; ++i)
+        tmp[i] = data[i];
+
+    delete [] data;
+    data = tmp;
     maxValues = newMax;
 }
 
-// check if array is empty
-
+// ======================================
+// Core member functions
+// ======================================
 bool StringArray::empty()
 {
     return numValues == 0;
 }
 
-// return current number of values
 int StringArray::size()
 {
     return numValues;
 }
 
-// return maximum value 
 int StringArray::maxSize()
 {
     return maxValues;
 }
 
-// Reserve capacity
-void StringArray::reserve(int n) 
+void StringArray::reserve(int n)
 {
-    if (n > maxValues) {
+    if (n > maxValues)
         growArray(n);
-    }
 }
 
-//reset to default
-
-void StringArray::clear() 
+void StringArray::clear()
 {
-    delete[] data;
-    maxValues = 5;
-    numValues = 0;
-    data = new std::string[maxValues];
+    numValues = 0;                           // clear values but keep memory
 }
 
-// Add value to the end of array
-void StringArray::push_back(std::string& value) 
+void StringArray::push_back(string& value)
 {
-    if (numValues == maxValues) {
-        growArray(maxValues * 2); // Double the capacity
-    }
-    data[numValues] = value;
-    numValues++;
+    if (numValues == maxValues)
+        growArray(maxValues * 2);
+
+    data[numValues++] = value;
 }
 
-// Print all values
+// ======================================
+// Print (output contents of array)
+// ======================================
 void StringArray::print()
 {
-    for (int i = 0; i < numValues; ++i) {
-        std::cout << data[i];
-        if (i < numValues - 1) {
-            std::cout << " ";
+    if (numValues == 0)
+    {
+        cout << "(empty)" << endl;
+        return;
+    }
+
+    for (int i = 0; i < numValues; ++i)
+    {
+        cout << data[i];
+        if (i + 1 < numValues)
+            cout << ", ";
+    }
+    cout << endl;
+}
+// ======================================
+// Linear Search (returns index or -1) Phase2 Giankarlo Gomez 10/21/25
+// ======================================
+int StringArray::linearSearch(std::string target)
+{
+    for (int i = 0; i < numValues; ++i)
+    {
+        // numeric compare: convert both sides with stoi G.G
+        if (stoi(data[i]) == stoi(target))
+            return i;
+    }
+    return -1;
+}
+
+// ======================================
+// Selection Sort Ascending (numeric) G.G
+// ======================================
+void StringArray::selectionSortAsc()
+{
+    for (int i = 0; i < numValues - 1; ++i)
+    {
+        int minPos = i;
+        for (int j = i + 1; j < numValues; ++j)
+        {
+            if (stoi(data[j]) < stoi(data[minPos]))
+                minPos = j;
+        }
+
+        if (minPos != i)
+        {
+            // swap
+            std::string t = data[i];
+            data[i] = data[minPos];
+            data[minPos] = t;
         }
     }
-    std::cout << std::endl;
+}
+
+// ======================================
+// Binary Search (array must be sorted asc) G.G
+// Returns index or -1
+// ======================================
+int StringArray::binarySearch(std::string target)
+{
+    int key = stoi(target);
+    int low = 0;
+    int high = numValues - 1;
+
+    while (low <= high)
+    {
+        int mid = (low + high) / 2;
+        int midVal = stoi(data[mid]);
+
+        if (key == midVal)
+            return mid;
+        else if (key < midVal)
+            high = mid - 1;
+        else
+            low = mid + 1;
+    }
+    return -1;
 }

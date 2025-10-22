@@ -20,6 +20,10 @@ public:
     ~StringArray();
     
     // Core member functions
+    // Searching and sorting (Phase 2) Giankarlo Gomez 10/21/25
+    int linearSearch(std::string target);    // returns index or -1
+    void selectionSortAsc();                 // sort ascending (numeric)
+    int binarySearch(std::string target);    // requires sorted asc
     bool empty();
     int size();
     int maxSize();
