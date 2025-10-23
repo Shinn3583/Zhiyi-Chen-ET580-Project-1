@@ -31,5 +31,10 @@ public:
     void clear();
     void push_back(std::string& value);
     void print();
+    std::string& at(int index);         // read/write access with assert
+    void resize(int n);                 // change current number of values
+    void pop_back();                    // remove last value (if any)
+    void insert(int index, const std::string& value);  // insert value at index
+    void erase(int index);              // erase value at index
 };
 #endif

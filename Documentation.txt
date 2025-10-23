@@ -6,17 +6,19 @@ The program successfully reads numerical data from data.csv using the File class
 The output displays the loaded data correctly. Constructors, destructors, and encapsulation were applied to manage dynamic memory safely.
 
 Phase 2
-Phase 2 extended the project by adding sorting and searching functionalities according to Group A’s requirements.
+Phase 2 extended the project by adding extended member functions to the container class according to Group A’s requirements.
 We implemented and tested:
-selectionSortAsc() for ascending order sorting,
-linearSearch() for sequential search, and
-binarySearch() for efficient lookup after sorting.
-All methods performed correctly, producing accurate results and clean formatted output.
+at() for indexed value access with validation.
+resize() for dynamic array resizing (both shrinking and expanding).
+pop_back() for removing the last element safely.
+insert() for inserting new values at a specific index.
+erase() for deleting elements at a given index.
+All functions worked correctly, handling memory updates and producing the expected formatted output.
 
 Team Contributions
 Zhiyi Chen – Phase 1 initialization, dynamic memory setup, constructor/destructor.
 Gabriel Sencion – File input handling, debugging CSV reading, and Makefile setup.
-Giankarlo Gomez – Phase 2 implementation (sorting and searching), code formatting, and Makefile update.
+Giankarlo Gomez – Phase 2 implementation (extended member functions), testing, code formatting, and Makefile update.
 Result
-Both phases compile and run successfully with make. 
-The output matches the project specifications.
+Both phases compile and run successfully with make.
+The output matches all project specifications.
