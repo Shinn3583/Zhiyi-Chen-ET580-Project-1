@@ -15,10 +15,17 @@ insert() for inserting new values at a specific index.
 erase() for deleting elements at a given index.
 All functions worked correctly, handling memory updates and producing the expected formatted output.
 
+Phase 3
+In Phase 3, two new algorithm functions were implemented in Algorithms.cpp: rotate() and isRotated().
+The rotate() function shifts the elements in the StringArray left or right by a given number of positions.
+The isRotated() function checks whether one array is a rotated version of another.
+Both functions were tested in driver_phase3.cpp using data from data.csv.
+
 Team Contributions
 Zhiyi Chen – Phase 1 initialization, dynamic memory setup, constructor/destructor.
 Gabriel Sencion – File input handling, debugging CSV reading, and Makefile setup.
 Giankarlo Gomez – Phase 2 implementation (extended member functions), testing, code formatting, and Makefile update.
+Ruoming Ye - Phase 3 implemented and tested rotate() and isRotated() and Makefile update.
 Result
-Both phases compile and run successfully with make.
+All phases compile and run successfully with make.
 The output matches all project specifications.

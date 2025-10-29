@@ -20,7 +20,17 @@ Container.o: Container.cpp Container.h
 File.o: File.cpp File.h
 	g++ -c File.cpp
 
+prog_phase3: driver_phase3.o Container.o File.o Algorithms.o
+	g++ -o prog_phase3 driver_phase3.o Container.o File.o Algorithms.o
+
+driver_phase3.o: driver_phase3.cpp Container.h File.h Algorithms.h
+	g++ -c driver_phase3.cpp
+
+Algorithms.o: Algorithms.cpp Algorithms.h
+	g++ -c Algorithms.cpp
+
 clean:
-	rm -f *.o prog prog_phase1
+	rm -f *.o prog prog_phase1 prog_phase3
 # Gabriel Sencion 10/15/25 rewrote make file
 # Giankarlo Gomez 10/21/25 updated make file for Phase 2
+# Ruoming Ye 10/28/25 updated make file for Phase 3
